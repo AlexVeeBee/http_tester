@@ -1,0 +1,98 @@
+:root {
+    --btn-border-color: #4A4A4A;
+    --btn-hover-color: #ffffff1a;
+    --btn-hover-outline-color: #7a7a7a;
+    
+    --btn-primary-color: #007bff;
+    --btn-primary-hover-color: #0056b3;
+    --btn-secondary-color: #6c757d;
+    --btn-secondary-hover-color: #5a6268;
+
+    --btn-success-border-color: #189e35;
+    --btn-success-color: #28a745;
+    --btn-success-hover-color: #218838;
+
+    --btn-danger-color: #dc3545;
+    --btn-danger-hover-color: #c82333;
+
+    --btn-liminal-color: #fff;
+    --btn-liminal-hover-color: #ffffff1a;
+}
+
+.btn {
+    --btn-border-color: #4A4A4A;
+    padding: 8px 16px;
+    background-color: #2C2C2C;
+    border: 1px solid var(--btn-border-color);
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+}
+.btn-liminal {
+    --btn-hover-color: rgba(255,255,255,0.1);
+    --btn-hover-outline-color: #7a7a7a;
+    background-color: transparent;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+    border:none;
+    outline: 0px solid transparent;
+    transition: background-color 0.1s ease-in-out,
+                outline 0.1s ease-in-out
+    ;
+}
+.btn-liminal:hover, 
+.btn-liminal:focus-visible {
+    background-color: var(--btn-hover-color);
+    outline: 1px solid var(--btn-hover-outline-color);
+}
+
+.btn.btn-primary {
+    padding: 8px 16px;
+    border-radius: 8px;
+    background-color: var(--btn-primary-color);
+    color: #fff;
+    cursor: pointer;
+}
+.btn.btn-primary:hover {
+    background-color: var(--btn-primary-hover-color);
+}
+.btn.btn-secondary {
+    padding: 8px 16px;
+    border-radius: 8px;
+    background-color: var(--btn-secondary-color);
+    color: #fff;
+    cursor: pointer;
+}
+.btn.btn-secondary:hover {
+    background-color: var(--btn-secondary-hover-color);
+}
+
+/* success */
+.btn.btn-success {
+    padding: 8px 16px;
+    border-radius: 8px;
+    background-color: var(--btn-success-color);
+    border-color: var(--btn-success-border-color);
+    color: #fff;
+    cursor: pointer;
+}
+
+.btn.btn-success:hover {
+    background-color: var(--btn-success-hover-color);
+}
+
+/* danger */
+
+.btn.btn-danger {
+    padding: 8px 16px;
+    border-radius: 8px;
+    background-color: var(--btn-danger-color);
+    color: #fff;
+    cursor: pointer;
+}
+
+.btn.btn-danger:hover {
+    background-color: var(--btn-danger-hover-color);
+}
+
