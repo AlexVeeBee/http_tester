@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "./App.css";
 import HttpTester from "./pages/httpTester";
 import { check } from "@tauri-apps/plugin-updater"
