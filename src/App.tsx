@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import HttpTester from "./pages/httpTester";
 import { check } from "@tauri-apps/plugin-updater"
+import toast from "react-hot-toast";
 
 
 const isUpdateAvailable = async () => {
@@ -28,6 +29,7 @@ function App() {
       const available = await isUpdateAvailable()
       if (available) {
         onUpdate();
+        toast.success("Update available");
       } else {
         setUpdateAvailable(false);
         setUpdateError(true);
@@ -37,8 +39,6 @@ function App() {
 
   return (
     <>
-      {updateAvailable && <div>Update available</div>}
-      {updateError && <div>Failed to check for updates</div>}
       <HttpTester />
     </>
   );
