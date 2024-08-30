@@ -18,21 +18,11 @@ const isUpdateAvailable = async () => {
 }
 
 function App() {
-  const [updateAvailable, setUpdateAvailable] = useState(false);
-  const [updateError, setUpdateError] = useState(false);
-  const onUpdate = () => {
-    setUpdateAvailable(true);
-  };
-
   useEffect(() => {
     (async () => {
       const available = await isUpdateAvailable()
       if (available) {
-        onUpdate();
         toast.success("Update available");
-      } else {
-        setUpdateAvailable(false);
-        setUpdateError(true);
       }
     })()
   }, []);
