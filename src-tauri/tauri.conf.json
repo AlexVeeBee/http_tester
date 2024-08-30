@@ -1,6 +1,6 @@
 {
   "productName": "http-tester",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "identifier": "com.http-tester.app",
   "build": {
     "beforeDevCommand": "yarn dev",
@@ -8,12 +8,22 @@
     "beforeBuildCommand": "yarn build",
     "frontendDist": "../dist"
   },
+  "plugins": {
+    "updater": {
+      "pubkey": "",
+      "endpoints": [
+        "https://github.com/AlexVeeBee/http_tester/releases/latest/download/latest.json"
+      ]
+    }
+  },
   "app": {
     "windows": [
       {
         "title": "http-tester",
         "width": 800,
-        "height": 600
+        "height": 600,
+        "minWidth": 800,
+        "minHeight": 600
       }
     ],
     "security": {
