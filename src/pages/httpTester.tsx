@@ -218,7 +218,11 @@ const responseClass = (status: number) => {
         case 208: return "success";
         case 226: return "success";
         case 404: return "error";
-        default: return "error";
+        case 500: return "error";
+        case 502: return "error";
+        case 503: return "error";
+        case 504: return "error";
+        default: return "info";
     }
 }
 
