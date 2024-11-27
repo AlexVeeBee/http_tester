@@ -1,6 +1,13 @@
-# Tauri + React + Typescript
+# HTTP tester
 
-This template should help get you started developing with Tauri, React and Typescript in Vite.
+A simple HTTP tester to send requests and see the response.
+
+## Features
+
+- Send GET, POST, PUT, DELETE requests
+- Send request with headers
+- Send request with body
+- See the response
 
 ## Recommended IDE Setup
 
