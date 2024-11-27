@@ -1,6 +1,6 @@
 {
   "productName": "http-tester",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "identifier": "com.http-tester.app",
   "build": {
     "beforeDevCommand": "yarn dev",
