@@ -65,7 +65,6 @@ input[type="time"]:focus {
 .ui-dropdown,
 select {
     padding: 8px 16px;
-    border-radius: 8px;
     background-color: #2C2C2C;
     border: 1px solid var(--border-color);
     color: #fff;

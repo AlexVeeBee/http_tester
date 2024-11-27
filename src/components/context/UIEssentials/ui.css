@@ -3,7 +3,6 @@
 .ui-dropdown {
     background-color: var(--light-2);
     border: 1px solid var(--light-3);
-    border-radius: 8px;
     padding: 8px;
     position: relative;
     cursor: pointer;

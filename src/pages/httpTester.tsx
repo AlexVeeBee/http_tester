@@ -6,9 +6,10 @@ import { fetch } from "@tauri-apps/plugin-http";
 import Icon from "./../components/icon";
 import { useModal } from "../components/context/modal/modalProvider";
 import { getVersion } from "@tauri-apps/api/app";
-import { MEditor } from "../components/MEditor";
 import { Dropdown } from "../components/context/UIEssentials/ui";
 import TabContainer from "../components/UI/TabContainer";
+import { basicSetup, EditorView } from "codemirror";
+import codemirrorTheme from "../components/codemirror/theme";
 
 const statusResponse = (status: number) => {
     switch (status) {
@@ -238,6 +239,9 @@ interface Header {
 }
 
 export default function HttpTester() {
+    const editorInputDivRef = useRef<HTMLDivElement>(null)
+    const editorInputRef = useRef<EditorView | null>(null)
+
     const [appVer, setAppVer] = useState<string>("");
     const modal = useModal();
     const [protocol, setProtocol] = useState<"http" | "https">("http");
@@ -349,6 +353,40 @@ export default function HttpTester() {
     }, [logs]);
 
     useEffect(() => {
+        if (!includeBody) {
+            editorInputRef.current?.destroy();
+            return;
+        }
+
+        if (!editorInputDivRef.current) return;
+
+        editorInputRef.current = new EditorView({
+            extensions: [
+                codemirrorTheme,
+                EditorView.updateListener.of((update) => {
+                    if (update.docChanged) {
+                        setBody(update.state.doc.toString());
+                    }
+                }),
+                basicSetup
+            ],
+            parent: editorInputDivRef.current!
+        })
+
+        editorInputRef.current.dispatch({
+            changes: {
+                from: 0,
+                to: editorInputRef.current.state.doc.length,
+                insert: body
+            }
+        });
+
+        return () => {
+            editorInputRef.current?.destroy();
+        }
+    }, [includeBody]);
+
+    useEffect(() => {
         if (!logRef.current) return;
         const log = logRef.current;
 
@@ -449,24 +487,10 @@ export default function HttpTester() {
                                         width: "100%",
                                         height: "100%",
                                         paddingBottom: "12px",
-                                        resize: "both",
                                         overflow: "auto",
-                                        border: "1px solid #ccc",
                                     }}
                                 >
-                                    <MEditor
-                                        width={"100%"}
-                                        height={"100%"}
-                                        theme="vs-dark"
-                                        language="json"
-                                        value={body}
-                                        onChange={(value) => setBody(value || "")}
-                                        options={{
-                                            minimap: {
-                                                enabled: false
-                                            }
-                                        }}
-                                    />
+                                    <div className="body-editor" ref={editorInputDivRef}></div>
                                 </div>
                             )
                         }
@@ -485,6 +509,7 @@ export default function HttpTester() {
                 <div className="inputs inputs-headers flex column" style={{ height:"100%",
                     flexShrink: 1,
                  }}>
+                    <p>Headers</p>
                     <div className="headers-header">
                         <Dropdown 
                             id="header-templates"

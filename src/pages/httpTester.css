@@ -1,5 +1,5 @@
 .http_tester {
-    --gaps: 10px;
+    --gaps: 5px;
     display: flex;
     flex-direction: rwo;
     align-items: flex-start;
@@ -166,4 +166,13 @@
 }
 .http_tester .inputs-headers .headers-header .ui-dropdown {
     width: 100%;
+}
+
+
+/*  */
+
+.http_tester .body-editor {
+    --editor-bkg: #282A36;
+    background-color: var(--editor-bkg);
+    height: 100%;
 }
